@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ApiTest110Superheroes">
         <activity
-            android:name=".features.presentation.SuperHeroesListActivity"
+            android:name=".presentation.SuperHeroesListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
