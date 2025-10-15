@@ -1,4 +1,4 @@
-package com.nicolator.miappdeprueba.domain
+package com.nicolator.miappdeprueba.features.domain
 
 data class SuperHero(
     val id: String,

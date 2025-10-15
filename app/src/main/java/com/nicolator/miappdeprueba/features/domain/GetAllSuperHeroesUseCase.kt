@@ -1,7 +1,7 @@
-package com.nicolator.miappdeprueba.domain
+package com.nicolator.miappdeprueba.features.domain
 
 class GetAllSuperHeroesUseCase(private val repository: SuperHeroRepository) {
-    operator fun invoke(): Result<List<SuperHero>> {
+    suspend operator fun invoke(): Result<List<SuperHero>> {
         val superHero = repository.getAllSuperheroes()
 
 

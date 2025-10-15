@@ -43,9 +43,16 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 
+    //retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    //Scopes
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+
+    //tests
     testImplementation(libs.junit)
     testImplementation(libs.mockk)
-
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
