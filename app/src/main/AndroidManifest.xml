@@ -13,9 +13,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ApiTest110Superheroes">
+        android:theme="@style/Theme.Superheroes">
         <activity
-            android:name=".presentation.SuperHeroesListActivity"
+            android:name=".features.presentation.SuperHeroesListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

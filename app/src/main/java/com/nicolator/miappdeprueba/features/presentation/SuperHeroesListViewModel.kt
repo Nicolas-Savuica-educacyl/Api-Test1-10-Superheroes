@@ -18,7 +18,6 @@ class SuperHeroesListViewModel ( val getAll: GetAllSuperHeroesUseCase) : ViewMod
     fun loadAllSuperHeroes(){
         //ejecuto el caso de uso
         viewModelScope.launch {
-            _uiState.value = UiState(isloading = true)
             getAll().fold(
                 {onSuccess(it)},
 
@@ -29,6 +28,7 @@ class SuperHeroesListViewModel ( val getAll: GetAllSuperHeroesUseCase) : ViewMod
             //UI
 
         }
+
     }
 
     private fun onSuccess(superheroes : List<SuperHero>){

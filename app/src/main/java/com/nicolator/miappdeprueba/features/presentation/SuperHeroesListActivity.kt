@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.nicolator.miappdeprueba.R
 import com.nicolator.miappdeprueba.core.api.ApiClient
 import com.nicolator.miappdeprueba.features.data.SuperheroDataRepository
@@ -14,7 +14,6 @@ import com.nicolator.miappdeprueba.features.data.remote.SuperHeroesApiRemoteData
 import com.nicolator.miappdeprueba.features.domain.ErrorApp
 import com.nicolator.miappdeprueba.features.domain.GetAllSuperHeroesUseCase
 import com.nicolator.miappdeprueba.features.domain.SuperHero
-import kotlin.concurrent.thread
 
 class SuperHeroesListActivity : AppCompatActivity() {
 
@@ -30,15 +29,8 @@ class SuperHeroesListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-
-        }
-
-
         setupObserver()
+
     }
 
 
@@ -62,6 +54,12 @@ class SuperHeroesListActivity : AppCompatActivity() {
 
              uiState.superheroes?.let { superHeroes ->
                  superHeroes
+
+
+                 findViewById<RecyclerView>(R.id.amRvSuperheores).layoutManager = LinearLayoutManager(this)
+                 findViewById<RecyclerView>(R.id.amRvSuperheores).adapter = AdaptadorSuperheroes(
+                     superHeroes as ArrayList<SuperHero>, this)
+
              }
 
          }
