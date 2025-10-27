@@ -1,7 +1,6 @@
 package com.nicolator.miappdeprueba.features.presentation
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -11,7 +10,6 @@ import com.nicolator.miappdeprueba.R
 import com.nicolator.miappdeprueba.core.api.ApiClient
 import com.nicolator.miappdeprueba.features.data.SuperheroDataRepository
 import com.nicolator.miappdeprueba.features.data.remote.SuperHeroesApiRemoteDataSource
-import com.nicolator.miappdeprueba.features.domain.ErrorApp
 import com.nicolator.miappdeprueba.features.domain.GetAllSuperHeroesUseCase
 import com.nicolator.miappdeprueba.features.domain.SuperHero
 
@@ -29,7 +27,11 @@ class SuperHeroesListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
+
+
         setupObserver()
+        viewModel.loadAllSuperHeroes()
 
     }
 
@@ -55,9 +57,8 @@ class SuperHeroesListActivity : AppCompatActivity() {
              uiState.superheroes?.let { superHeroes ->
                  superHeroes
 
-
-                 findViewById<RecyclerView>(R.id.amRvSuperheores).layoutManager = LinearLayoutManager(this)
-                 findViewById<RecyclerView>(R.id.amRvSuperheores).adapter = AdaptadorSuperheroes(
+                 findViewById<RecyclerView>(R.id.amRvSuperheroes).layoutManager = LinearLayoutManager(this)
+                 findViewById<RecyclerView>(R.id.amRvSuperheroes).adapter = AdaptadorSuperheroes(
                      superHeroes as ArrayList<SuperHero>, this)
 
              }
@@ -67,14 +68,5 @@ class SuperHeroesListActivity : AppCompatActivity() {
     }
 
 
-    private fun isFailure(errorApp: ErrorApp) {
-        Log.d("HeroesError", "Error: ${errorApp.javaClass.simpleName}")
-    }
-
-    private fun isSuccess(superHeroes: List<SuperHero>) {
-        Log.d(
-            "HeroesSuccess", superHeroes.toString()
-        )
-    }
 
 }

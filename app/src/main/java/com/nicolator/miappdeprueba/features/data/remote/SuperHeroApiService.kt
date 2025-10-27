@@ -7,7 +7,7 @@ import retrofit2.http.Path
 
 interface SuperHeroApiService {
     @GET("all.json")
-    fun findAll(): Call<List<SuperHeroApiModel>>
+    suspend fun findAll():  Response<List<SuperHeroApiModel>>
 
     @GET("id/{superheroId}.json")
     fun findById(@Path("superheroId") id: String): Response<SuperHeroApiModel>

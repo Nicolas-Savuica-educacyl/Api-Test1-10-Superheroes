@@ -2,13 +2,12 @@ package com.nicolator.miappdeprueba.features.presentation
 
 import android.content.Context
 import android.content.Intent
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.net.toUri
+import com.bumptech.glide.Glide
 import androidx.recyclerview.widget.RecyclerView
 import com.nicolator.miappdeprueba.R
 
@@ -44,17 +43,16 @@ class AdaptadorSuperheroes (private var lista: ArrayList<SuperHero>, private var
     }
 
     class ViewHolder(var vista: View, var contexto: Context) : RecyclerView.ViewHolder(vista){
-        fun bind(superheroes: SuperHero){
-            vista.findViewById<ImageView>(R.id.lsIvFoto).setImageURI(superheroes.imageURL.toUri())
-            vista.findViewById<TextView>(R.id.lsTvNombre).text = superheroes.name
-            vista.findViewById<TextView>(R.id.lsTvSlug).text = superheroes.slug
+        fun bind(superhero: SuperHero){
+            Glide.with(contexto)
+                .load(superhero.imageURL)
+                .into(vista.findViewById(R.id.lsIvFoto))
+            vista.findViewById<TextView>(R.id.lsTvNombre).text = superhero.name
+            vista.findViewById<TextView>(R.id.lsTvSlug).text = superhero.slug
 
             vista.setOnClickListener {
-                contexto.startActivity(Intent(contexto, CardPage::class.java).putExtra("sh", superheroes))
+                contexto.startActivity(Intent(contexto, CardPage::class.java).putExtra("sh", superhero))
             }
-
-
         }
-
     }
 }

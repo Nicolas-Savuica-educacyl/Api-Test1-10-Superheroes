@@ -18,8 +18,12 @@ class SuperHeroesListViewModel ( val getAll: GetAllSuperHeroesUseCase) : ViewMod
     fun loadAllSuperHeroes(){
         //ejecuto el caso de uso
         viewModelScope.launch {
+
+            _uiState.value = UiState(isloading = true)
+
+
             getAll().fold(
-                {onSuccess(it)},
+                {onSuccess(superheroes = it)},
 
                 {onError(it as ErrorApp)}
             )

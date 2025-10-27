@@ -22,8 +22,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/amRvSuperheores"
+            android:id="@+id/amRvSuperheroes"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            tools:visibility="visible" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

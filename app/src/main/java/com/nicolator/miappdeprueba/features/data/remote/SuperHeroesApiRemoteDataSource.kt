@@ -8,15 +8,15 @@ import kotlinx.coroutines.withContext
 
 class SuperHeroesApiRemoteDataSource (private val apiClient: ApiClient){
 
-    val apiService = apiClient.createService(SuperHeroApiService::class.java)
+    private val apiService = apiClient.createService(SuperHeroApiService::class.java)
 
-    val responseSuperHero = apiService.findAll()
     suspend fun getSuperHeroes(): Result<List<SuperHero>> {
         return withContext(Dispatchers.Main) {
-            val apiService = apiClient.createService(SuperHeroApiService::class.java)
-            val resultSuperHero = apiService.findAll().execute()
+            val resultSuperHero = apiService.findAll()
             if (resultSuperHero.isSuccessful && resultSuperHero.errorBody() == null) {
                 val listSuperHeroApiModel: List<SuperHeroApiModel> = resultSuperHero.body()!!
+
+
                 val listSuperHero = listSuperHeroApiModel.map { superHeroApiModel ->
                     superHeroApiModel.toModel()
                 }

@@ -50,6 +50,9 @@ dependencies {
     //Scopes
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
+    //image
+    implementation(libs.glide)
+
     //tests
     testImplementation(libs.junit)
     testImplementation(libs.mockk)
